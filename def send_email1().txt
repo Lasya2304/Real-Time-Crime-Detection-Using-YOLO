@@ -1,0 +1,20 @@
+def send_email1():
+    try:
+        g = geocoder.ip('me')
+        location = g.latlng
+        print("location==>",location)
+        map_loc="https://www.google.com/maps/place/BAPATLA+WOMEN'S+ENGINEERING+COLLEGE/@15.9092148,80.4782357,16.06z/data=!4m6!3m5!1s0x3a4a3fa4f4a12a9b:0xc76db53b41613fb6!8m2!3d15.9076736!4d80.4849705!16s%2Fg%2F11cn92jrgr?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D"
+        print(map_loc)
+        msg = MIMEText(f" I am in Danger, Location: {location} {map_loc} ")
+        msg["Subject"] = "Alert"
+        msg["From"] = "dskreddy02@gmail.com"
+        msg["To"] = "rswathi202021@gmail.com"
+
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+        server.login("shaikmahebooba4@gmail.com", "wvfu gnyo smcn djhc")  # App password if 2FA is enabled
+        server.send_message(msg)
+        server.quit()
+        messagebox.showinfo("Success", "Email sent successfully.")
+    except Exception as e:
+        messagebox.showerror("Email Triggered", str(e))
+        messagebox.showerror("Email Triggered")
